@@ -41,3 +41,42 @@ class Firework {
     ellipse(x, y, diameter, diameter);
   }
 }
+
+
+
+
+
+
+class vehicle{
+  float x, y, speed, a, b,c,d,rot_speed;
+  vehicle(){}
+  void display(){
+    fill(255);
+    rect(x,y,100,50);
+    ellipse(x+30,y+50,30,30);
+    ellipse(x+70,y+50,30,30);
+    line(a,b,2*x+60-a,2*y+100-b);
+    line(c,d,2*x+140-c,2*y+100-d);
+  }
+  void move(){
+    this.x=this.x+this.speed;
+      
+  }
+  void rot(){
+    this.a+=rot_speed;
+    this.c+=rot_speed;
+    if(a>x+45){
+      a=x+15;
+    }
+    else {
+      b=y+50-sqrt(15*15-(a-x-30)*(a-x-30));
+    }
+    if(c>x+85){
+      c=x+55;
+    }
+    else{
+      d=y+50-sqrt(15*15-(c-x-70)*(c-x-70));
+    }
+    
+  }
+}

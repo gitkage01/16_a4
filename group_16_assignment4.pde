@@ -1,6 +1,7 @@
 Firework tr1;
 Firework tr2;
 Firework tr3;
+vehicle v;
 
 void setup() {
   size(1280, 720);
@@ -27,6 +28,13 @@ void setup() {
   tr3.speed_x = 5;
   tr3.speed_y = 5;
   tr3.direction_x = tr3.direction_y = 1;
+  v=new vehicle();
+  v.speed=0.5;
+  v.x=0;
+  v.y=500;
+  v.a=15;
+  v.c=55;
+  v.rot_speed=3;
 }
 
 void draw() {
@@ -40,6 +48,9 @@ void draw() {
   tr3.move();
   tr3.colorize();
   tr3.display();
+  v.move();
+  v.rot();
+  v.display();
 
   
 }
