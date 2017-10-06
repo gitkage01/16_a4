@@ -1,5 +1,6 @@
+
 class Firework {
-  float x, y, diameter, speed_x, speed_y, direction_x, direction_y, hue;
+  float x, y, rotateVal, speed_x, speed_y, direction_x, direction_y;
   Firework() {}
   
   void move() {
@@ -31,28 +32,24 @@ class Firework {
     }
   }
   
-  void colorize() {
-    colorMode(HSB);
-    this.hue = this.y/2;
-    fill(this.hue, 100, 100);
-  }
-  
   void display() {
-    ellipse(x, y, diameter, diameter);
+    imageMode(CENTER);
+    pushMatrix();
+    translate(x, y);
+    rotate(rotateVal);
+    image(star, 0, 0);
+    popMatrix();
+    rotateVal += 0.02;
   }
 }
-
-
-
-
-
 
 class vehicle{
   float x, y, speed, a, b,c,d,rot_speed;
   vehicle(){}
   void display(){
-    fill(255);
+    fill(255, 0, 0);
     rect(x,y,100,50);
+    fill(211, 211, 211);
     ellipse(x+30,y+50,30,30);
     ellipse(x+70,y+50,30,30);
     line(a,b,2*x+60-a,2*y+100-b);
