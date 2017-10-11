@@ -1,0 +1,7 @@
+Our animation is about an alien UFO taking a car at night. There are three classes: Firework, vehicle, and UFO. 
+Het did the Firework part that stars can both move and rotate.
+Jiajun did the vehicle part that the car can move forward and also the wheels can spin.
+Lauren did the UFO part that the UFO can move and also the airscrew can spin.
+We had some difficulties of control and calculate the speed.
+Extra credit:
+we add the super mario song as the background music after the car disappeared. 

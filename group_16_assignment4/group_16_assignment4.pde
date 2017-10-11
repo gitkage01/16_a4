@@ -1,13 +1,18 @@
+import processing.sound.*;
+SoundFile file;
 Firework tr1;
 Firework tr2;
 Firework tr3;
 vehicle v;
 PImage star;
+PShape ufo;
+Ufo u1;
 
 void setup() {
   size(1280, 720);
   background(25, 25, 112);
   frameRate(120);
+  file = new SoundFile(this, "sound1.wav");
   star = loadImage("star1.png");
   tr1 = new Firework();
   tr1.x = width/2;
@@ -31,12 +36,21 @@ void setup() {
   tr3.speed_y = 3;
   tr3.direction_x = tr3.direction_y = 1;
   v=new vehicle();
-  v.speed=0.5;
+  v.speed=2.9;
   v.x=0;
   v.y=500;
   v.a=15;
   v.c=55;
-  v.rot_speed=2;
+  v.rot_speed=5;
+  u1 = new Ufo();
+  u1.x = 0;
+  u1.y = 0;
+  u1.speed_x = 3;
+  u1.speed_y = 1.5;
+  u1.lx = 95;
+  u1.ly = 50;
+  u1.l1 = 20;
+  u1.l2 = 50;
 }
 
 void draw() {
@@ -51,7 +65,36 @@ void draw() {
   tr3.display();
   v.move();
   v.rot();
-  v.display();
+  if (v.x<850){
+    v.display();
+  }
+  if (v.x>850 && v.x<853){
+    file.play();
+  }
   fill(0, 0, 0);
   rect(0, 568, 1280, 152);  
+  
+  u1.display();
+  if (u1.x < 900) {
+    u1.move();
+    if (u1.l1 <= u1.lx + 60) {
+      u1.rotor();
+    }
+    if (u1.l1 > u1.lx + 60) {
+      u1.l1 = u1.lx - 36;
+    }
+  }
+  
+
+  if (u1.x >= 900) {
+    u1.speed_x = 0;
+    u1.speed_y = -20;
+    u1.move();
+    if (u1.l1 <= u1.lx + 60) {
+      u1.rotor();
+    }
+    if (u1.l1 > u1.lx + 60) {
+      u1.l1 = u1.lx - 60;
+    }
+  }
 }
